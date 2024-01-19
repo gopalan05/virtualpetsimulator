@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class VirtualPetSimulator {
+    public static void main(String[] args) {
+        int a;
+        char[] z = new char[50];
+        char[] x = new char[50];
+        char[] c = new char[50];
+        System.out.println("WELCOME TO VIRTUAL PET SIMULATOR\n\nPRESS ANY KEY TO CONTINUE....");
+        System.out.println("\n\n\n\nSIGN IN YOUR GAME IN CLOUD SO YOU DON'T LOSE YOUR DATA ");
+        System.out.println("\n\nENTER YOUR EMAIL :");
+        Scanner scanner = new Scanner(System.in);
+        scanner.next(z);
+        System.out.println("\n\nENTER PASSWORD :");
+        scanner.next(x);
+        System.out.println("\n\nSIGNING IN YOUR PERSONAL ACCOUNT....\n");
+        System.out.printf("\n\nCONNECTED TO %s", z);
+        System.out.println("\n\nLOADING YOUR GAME PLEASE WAIT.................\n\n");
+        System.out.println("ENTER YOUR NAME :");
+        scanner.next(c);
+        System.out.printf("\n\nWELCOME %s", c);
+        System.out.println("\n\n----------------------RULES--------------------\n\n YOU GONNA RAISE THE PET UNTIL IT REACHES THE AGE 10\n PLEASE TAKE CARE OF YOUR PET\n-------------------------------------------------");
+        System.out.println("\n\nIT'S A CLOUDY MORNING ... YOU DRIVING YOUR CAR TO THE NEARBY PET SHOP...YOU ADOPTED A NEW PET...\n\n");
+        char[] q = new char[50];
+        char[] w = new char[50];
+        System.out.println("\n\nNAME YOUR PET :");
+        scanner.next(q);
+        int hunger = 50;
+        int happiness = 50;
+        int energy = 50;
+        int age = 0;
+        while (age < 10) {
+            System.out.printf("AGE :%d | HUNGER :%d| HAPPINESS :%d | ENERGY :%d\n", age, hunger, happiness, energy);
+            System.out.println(" \n\nWHAT WOULD YOU LIKE TO DO ? \n(1)FEED\n(2)PLAY\n(3)REST\n");
+            int action = scanner.nextInt();
+            switch (action) {
+                case 1:
+                    hunger -= 10;
+                    energy += 5;
+                    break;
+                case 2:
+                    System.out.printf("YOU ARE PLAYING WITH %s", q);
+                    happiness += 10;
+                    energy -= 10;
+                    break;
+                case 3:
+                    energy += 15;
+                    break;
+                default:
+                    System.out.println("INVALID ACTION");
+            }
+            if (hunger > 100) hunger = 100;
+            if (happiness > 100) happiness = 100;
+            if (energy > 100) energy = 100;
+            if (hunger < 0 || happiness <= 0 || energy <= 0) {
+                System.out.printf("%s DROPPED A GRENADE IN YOUR HOUSE AND RAN AWAY-----YOU DIED\n", q);
+                return;
+            }
+            age++;
+            hunger += 5;
+            happiness -= 5;
+            energy -= 5;
+        }
+        System.out.printf("\nCONGRATULATIONS! YOU SUCCESSFULLY RAISED %s TO AGE 10!...\n", q);
+    }
+} 
